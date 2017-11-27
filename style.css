@@ -1,0 +1,50 @@
+body {
+    background-color: dimgray;
+    margin: 0;
+    padding: 0;
+}
+
+#header {
+    width: 50%;
+    text-align: center;
+    margin: auto;
+}
+
+#divMain {
+    width: 80%;
+    margin: auto;
+}
+
+th, td {
+    padding: 15px;
+}
+
+#missionProgress {
+    width: 20%;
+}
+
+#missionBar {
+    width: 0;
+    height: 30px;
+    background-color: green;
+    text-align: left;
+    color: white;
+}
+
+#notificationsDiv {
+    width: 80%;
+    margin: 25px;
+    position: relative;
+    text-align: center;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0px;
+}
+
+#twitter {
+    width: 30px;
+    height: 30px;
+    float: right;
+}
