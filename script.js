@@ -8,6 +8,8 @@ var notifier;
 var APtext;
 var AKtext;
 var championsText;
+var championsReady
+
 window.onload = function () {
     APtext = document.getElementById("AP");
     AKtext = document.getElementById("AK");
@@ -15,6 +17,7 @@ window.onload = function () {
     notifier = document.getElementById("notifications");
     AKtext.innerHTML = AKlevel.toString();
     championsText.innerHTML = champions.toString();
+    championsReady = true
 };
 window.setInterval(updateAP, 1000);
 function updateAP() {
@@ -50,20 +53,30 @@ function runDungeon() {
         notifier.innerHTML = "gained 10 resources";
     }
 }
-//when progrss bar fill. give reward --fix running multiple at once
+//when progrss bar fill. give reward
 function sendChampions() {
-    var elem = document.getElementById("missionBar");
-    var width = 0;
-    var id = setInterval(frame, 100);
-    function frame() {
-        if (width >= 100) {
-            runDungeon(); //fix this
-            clearInterval(id);
-        }
-        else {
-            width++;
-            elem.style.width = width + "%";
-            elem.innerHTML = width * 1 + "%";
+    if (championsReady == true) {
+        //console.log("championsReady")
+        var elem = document.getElementById("missionBar");
+        var width = 0;
+        var id = setInterval(frame, 100)
+
+        function frame() {
+            if (width >= 100) {
+                runDungeon(); //fix this (auto gives same reward as running a dungeon)
+                championsReady = true
+                //console.log(width)
+                clearInterval(id)
+            }
+            else {
+                width++;
+                elem.style.width = width + "%";
+                elem.innerHTML = width * 1 + "%";
+                championsReady = false
+                //console.log("test")
+            }
         }
     }
 }
+
+
