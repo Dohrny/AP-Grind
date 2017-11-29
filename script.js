@@ -36,21 +36,29 @@ function addChampion() {
 function increaseAK() {
     AKlevel += 1;
     AKtext.innerHTML = AKlevel.toString();
-    AKpercent = 100 * (1.3 * AKlevel);
+    AKpercent = Math.round(AKpercent * 1.3)
 }
 //give reward for pressing button. soon progress bar w/ fail chance
 function runDungeon() {
     var reward = Math.round(Math.random());
-    if (reward == 0) {
-        var APgained = Math.floor(10 * AKpercent / 100);
-        AP += APgained;
-        APtext.innerHTML = AP.toString();
-        notifier.innerHTML = "gained " + APgained + "AP";
+    var fail = Math.floor(Math.random() * 100 + 1)
+
+    if (fail > 33) {
+        if (reward == 0) {
+            var APgained = Math.floor(10 * AKpercent);
+            AP += APgained;
+            APtext.innerHTML = AP.toString();
+            notifier.innerHTML = "gained " + APgained + "AP";
+            console.log(AKpercent)
+        }
+        if (reward == 1) {
+            resources += 10;
+            document.getElementById("resources").innerHTML = resources.toString();
+            notifier.innerHTML = "gained 10 resources";
+        }
     }
-    if (reward == 1) {
-        resources += 10;
-        document.getElementById("resources").innerHTML = resources.toString();
-        notifier.innerHTML = "gained 10 resources";
+    else {
+        notifier.innerHTML = "dungeon failed. you are a noob"
     }
 }
 //when progrss bar fill. give reward
