@@ -17,13 +17,14 @@ body {
 
 th, td {
     padding: 15px;
+    background-color: white;
 }
 
-#missionProgress {
+#missionProgress, #dungeonProgress {
     width: 20%;
 }
 
-#missionBar {
+#missionBar, #dungeonBar {
     width: 0;
     height: 30px;
     background-color: green;

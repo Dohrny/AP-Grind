@@ -9,6 +9,7 @@ var APtext;
 var AKtext;
 var championsText;
 var championsReady
+var dungeonReady
 
 window.onload = function () {
     APtext = document.getElementById("AP");
@@ -18,6 +19,7 @@ window.onload = function () {
     AKtext.innerHTML = AKlevel.toString();
     championsText.innerHTML = champions.toString();
     championsReady = true
+    dungeonReady = true
 };
 //add AP every second
 window.setInterval(updateAP, 1000);
@@ -41,40 +43,44 @@ function increaseAK() {
 }
 //give reward for pressing button. soon progress bar w/ fail chance
 function runDungeon() {
-    var reward = Math.round(Math.random());
-    var fail = Math.floor(Math.random() * 100 + 1)
+    if (dungeonReady == true) {
+        var elem = document.getElementById("dungeonBar")
+        var width = 0
+        var id = setInterval(frame, 100)
 
-    if (fail > 33) {
-        if (reward == 0) {
-            var APgained = Math.floor(10 * AKpercent);
-            AP += APgained;
-            APtext.innerHTML = AP.toString();
-            notifier.innerHTML = "gained " + APgained + "AP";
-            console.log(AKpercent)
+        function frame() {
+            if (width >= 100) {
+                var fail = Math.floor(Math.random() * 100 + 1)
+                dungeonReady = true
+                clearInterval(id)
+
+                if (fail > 33) {
+                    rewardPlayer()
+                }
+                else {
+                    notifier.innerHTML = "dungeon failed. you are a noob"
+                }
+            }
+            else {
+                width++
+                elem.style.width = width + "%"
+                elem.innerHTML = width * 1 + "%"
+                dungeonReady = false
+            }
         }
-        if (reward == 1) {
-            resources += 10;
-            document.getElementById("resources").innerHTML = resources.toString();
-            notifier.innerHTML = "gained 10 resources";
-        }
-    }
-    else {
-        notifier.innerHTML = "dungeon failed. you are a noob"
     }
 }
 //when progrss bar fill. give reward
 function sendChampions() {
     if (championsReady == true) {
-        //console.log("championsReady")
         var elem = document.getElementById("missionBar");
         var width = 0;
         var id = setInterval(frame, 100)
 
         function frame() {
             if (width >= 100) {
-                runDungeon(); //fix this (auto gives same reward as running a dungeon)
+                rewardPlayer()
                 championsReady = true
-                //console.log(width)
                 clearInterval(id)
             }
             else {
@@ -82,9 +88,25 @@ function sendChampions() {
                 elem.style.width = width + "%";
                 elem.innerHTML = width * 1 + "%";
                 championsReady = false
-                //console.log("test")
             }
         }
+    }
+}
+//gives AP or resources
+function rewardPlayer() {
+    var reward = Math.round(Math.random())
+
+    if (reward == 0) {
+        var APgained = Math.floor(10 * AKpercent);
+        AP += APgained;
+        APtext.innerHTML = AP.toString();
+        notifier.innerHTML = "gained " + APgained + "AP";
+        console.log(AKpercent)
+    }
+    if (reward == 1) {
+        resources += 10;
+        document.getElementById("resources").innerHTML = resources.toString();
+        notifier.innerHTML = "gained 10 resources";
     }
 }
 
