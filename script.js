@@ -19,9 +19,10 @@ window.onload = function () {
     championsText.innerHTML = champions.toString();
     championsReady = true
 };
+//add AP every second
 window.setInterval(updateAP, 1000);
 function updateAP() {
-    APtext.innerHTML = AP.toString();
+    APtext.innerHTML = AP.toLocaleString();
     AP += Math.floor(1 * (AKpercent / 100 * champions));
 }
 // +1 champions. --add cost that increases for each champ
