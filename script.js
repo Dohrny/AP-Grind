@@ -4,7 +4,7 @@ var AKpercent = 100 * (1.3 * AKlevel);
 var champions = 1;
 var championCost
 var MAX_CHAMPIONS = 6;
-var resources = 0;
+var resources = 500;
 var notifier;
 var APtext;
 var AKtext;
@@ -53,22 +53,30 @@ function increaseAK() {
         AKpercent = Math.round(AKpercent * 1.3)
         AKready = false
         
-        var timer = new CountDownTimer(5)
-        var timeObj = CountDownTimer.parse(5)
-            
-        format(timeObj.minutes, timeObj.seconds)
-        timer.onTick(format)
-
-        timer.start()
-    }
-    function format(minutes, seconds) {
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-        AKtimerText.innerHTML = minutes + ':' + seconds;
+        startTimer(0, 5)
     }
 }
 
+//maybe this timer will work. i know it makes more sense
+function startTimer(m, s) {
+    document.getElementById("increaseAKButton").textContent = m + ":" + s;
+    if (s == 0) {
+        if (m == 0) {
+            AKready = true
+            document.getElementById("increaseAKButton").textContent = "AK+"
+            return
+        }
+        else if (m != 0) {
+            m = m - 1;
+            s = 60;
+            t();
+        }
+    }
+    s = s - 1;
+    t();
 
+    function t() { setTimeout(function () { startTimer(m, s) }, 1000) };
+}
 
 //give reward for pressing button. has a chance to fail
 function runDungeon() {
@@ -145,35 +153,3 @@ function updateValues() {
     resourcesText.innerHTML = resources.toString()
     championsText.innerHTML = champions.toString()
 }
-
-
-/* function startTimer(duration, display) {
-    var start = Date.now(),
-        diff,
-        minutes,
-        seconds;
-    function timer() {
-        // get the number of seconds that have elapsed since 
-        // startTimer() was called
-        diff = duration - (((Date.now() - start) / 1000) | 0);
-
-        // does the same job as parseInt truncates the float
-        minutes = (diff / 60) | 0;
-        seconds = (diff % 60) | 0;
-
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-        display.textContent = minutes + ":" + seconds; 
-
-        if (diff <= 0) {
-            // add one second so that the count down starts at the full duration
-            // example 05:00 not 04:59
-            start = Date.now() + 1000;
-        }
-    };
-    // we don't want to wait a full second before the timer starts
-    timer();
-    setInterval(timer, 1000);
-} */
-
