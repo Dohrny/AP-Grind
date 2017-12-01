@@ -15,6 +15,12 @@ body {
     margin: auto;
 }
 
+.AK p {
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+
 th, td {
     padding: 15px;
     background-color: white;

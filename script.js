@@ -53,7 +53,7 @@ function increaseAK() {
         AKpercent = Math.round(AKpercent * 1.3)
         AKready = false
         
-        startTimer(0, 5)
+        startTimer(0, 2)
     }
 }
 
@@ -115,7 +115,7 @@ function sendChampions() {
         var id = setInterval(frame, 100)
 
         function frame() {
-            if (width >= 100) {
+            if (width >= 10) {
                 rewardPlayer()
                 championsReady = true
                 clearInterval(id)

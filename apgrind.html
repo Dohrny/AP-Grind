@@ -15,6 +15,18 @@
     </a>
   </div>
   <div id="divMain">
+    <h1>
+      AP: <span id="AP">0</span>
+    </h1>
+    <h2 class="AK">
+      AK: <span id="AK">0</span>
+      <p>
+        <button id="increaseAKButton" onclick="increaseAK()">AK+</button>
+      </p>
+    </h2>
+    <h2>
+      Champs: 
+    </h2>
     <table>
       <tr>
         <th>Thingies</th>
@@ -23,48 +35,34 @@
         <th>Misc</th>
       </tr>
       <tr>
-        <td>AP</td>
-        <td id="AP">0</td>
-        <td>---</td>
-        <td>how much AP you have. Increases by 1/s * AK % * champions</td>
-      </tr>
-      <tr>
-        <td>AK</td>
-        <td id="AK">0</td>
-        <td>Increase AK level
-          <button id="increaseAKButton" onclick="increaseAK()">AK+</button>
-        </td>
-        <td>AK level / percent</td>
-      </tr>
-      <tr>
         <td>Resources</td>
         <td id="resources">0</td>
         <td>---</td>
         <td>num of resources</td>
-      <tr>
-        <td>Champions</td>
-        <td id="champions">0</td>
-        <td>Add champion
-          <button onclick="addChampion()">Champ+</button>
-        </td>
-        <td>cost: some resources</td>
-      </tr>
-      <tr>
-        <td>
-          <button onclick="sendChampions()"> send champions</button>
-        </td>
-        <td id="missionProgress">
-          <div id="missionBar"></div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <button onclick="runDungeon()">run dungeon</button>
-        </td>
-        <td id="dungeonProgress">
-          <div id="dungeonBar"></div>
-        </td>
-      </tr>
+        <tr>
+          <td>Champions</td>
+          <td id="champions">0</td>
+          <td>Add champion
+            <button onclick="addChampion()">Champ+</button>
+          </td>
+          <td>cost: some resources</td>
+        </tr>
+        <tr>
+          <td>
+            <button onclick="sendChampions()"> send champions</button>
+          </td>
+          <td id="missionProgress">
+            <div id="missionBar"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button onclick="runDungeon()">run dungeon</button>
+          </td>
+          <td id="dungeonProgress">
+            <div id="dungeonBar"></div>
+          </td>
+        </tr>
     </table>
   </div>
   <div id="notificationsDiv">
