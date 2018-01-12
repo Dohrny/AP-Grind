@@ -1,0 +1,19 @@
+{
+  "name": "ap-grind",
+  "version": "0.0.5",
+  "description": "ap grind idle game",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dohrny/AP-Grind.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dohrny/AP-Grind/issues"
+  },
+  "homepage": "https://github.com/Dohrny/AP-Grind#readme"
+}
