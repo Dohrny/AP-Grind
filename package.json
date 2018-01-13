@@ -2,7 +2,7 @@
   "name": "ap-grind",
   "version": "0.0.5",
   "description": "ap grind idle game",
-  "main": "script.js",
+  "main": "apGrind-app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

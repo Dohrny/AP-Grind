@@ -1,0 +1,50 @@
+html
+    head
+        title AP Grind
+        link(rel='stylesheet' href='/ap-grind/public/css/style.css')
+        script(src='/ap-grind/public/js/script.js')
+
+    body
+        .header
+            h1 AP Grind
+            a(href='https://twitter.com/Dohrny' target='_blank')
+                img#twitter(src= '/ap-grind/public/images/Twitter_Logo.png' alt='twitter')
+        #divMain
+            h1 AP: 
+                span#AP 0
+            h2.AK AK: 
+                span#AK 0
+                p
+                    button#increaseAKButton(onclick='increaseAK()') AK+
+            h2 Champs:
+            table
+                tr
+                    th Thingies
+                    th Amount
+                    th Action
+                    th Misc
+                tr
+                    td Resources
+                    td#resources 0
+                    td ---
+                    td num of resources
+                tr
+                    td#champions 0
+                    td Add champion
+                        button(onclick='addChampion()') Champ+
+                    td cost: some resources
+                tr
+                    td
+                        button(onclick='sendChampions()') send champions
+                    td#missionProgress
+                        #missionBar
+                tr
+                    td
+                        button(onclick='runDungeon()') run dungeon
+                    td#dungeonProgress
+                        #dungeonBar
+        
+        #notificationsDiv
+            p#notifications notifications go here
+        #footer
+            | v0.0.5
